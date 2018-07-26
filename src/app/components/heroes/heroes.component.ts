@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HeroStructure } from '../../hero.interface';
+import { Hero } from '../../hero.interface';
 
 @Component({
   selector: 'app-heroes',
@@ -9,15 +9,15 @@ import { HeroStructure } from '../../hero.interface';
 export class HeroesComponent implements OnInit {
 
   @Input() name: String;
-  hero: HeroStructure;
+  @Input() hero: Hero;
 
   constructor() { }
 
   ngOnInit() {
-    this.hero = {
-      id: 1,
-      name: this.name
-    };
+    // this.hero = {
+    //   id: 1,
+    //   name: this.name
+    // };
   }
 
 }

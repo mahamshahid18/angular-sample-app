@@ -11,7 +11,7 @@ export class AppComponent {
   private title: String;
 
   constructor() {
-    this.title = 'Tour of Heroes Sample';
+    this.title = 'Bots Marketplace';
   }
 
 }

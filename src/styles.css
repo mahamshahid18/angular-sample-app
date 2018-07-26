@@ -22,8 +22,13 @@ h2, h3 {
 body {
     margin: 2em;
     font-weight: 200;
+    background: url('./assets/images/ninja-bot.png') no-repeat;
 }
 
 body, input[text], button {
     color: #947CB0;
+}
+
+#herosListSection, #selectedHeroDetailSection {
+    padding: 20px 100px;
 }

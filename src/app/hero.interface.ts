@@ -1,5 +1,5 @@
 
-export interface HeroStructure {
+export interface Hero {
     id: number;
     name: String;
 }
