@@ -13,6 +13,6 @@
 
 <div id="selectedHeroDetailSection">
   <app-heroes [hero]="(selectedHero === undefined? listOfHeroes[0] : selectedHero)"
-    [hidden]="selectedHero == undefined">
+    [hidden]="(selectedHero == undefined) || (selectedHero.id == -1)">
   </app-heroes>
 </div>

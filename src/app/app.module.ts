@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { ListOfHeroesComponent } from './components/list-of-heroes/list-of-heroes.component';
 
+import { HeroService } from './services/heroes/hero.service';
+import { DataService } from './services/data/data.service';
+import { HttpModule } from '../../node_modules/@angular/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +18,13 @@ import { ListOfHeroesComponent } from './components/list-of-heroes/list-of-heroe
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    HeroService,
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
