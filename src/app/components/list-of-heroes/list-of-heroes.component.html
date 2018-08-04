@@ -2,6 +2,7 @@
   <ul class="heroes">
     <li *ngFor="let hero of listOfHeroes"
         (click)= "selectHero(hero)"
+        routerLink="/hero/{{ hero.id }}"
         [class.selected]="hero.id === (selectedHero == undefined? -1 : selectedHero.id)">
       <span class="badge">
         {{ hero.id }}
@@ -11,8 +12,8 @@
   </ul>
 </div>
 
-<div id="selectedHeroDetailSection">
+<!-- <div id="selectedHeroDetailSection">
   <app-heroes [hero]="(selectedHero === undefined? listOfHeroes[0] : selectedHero)"
     [hidden]="(selectedHero == undefined) || (selectedHero.id == -1)">
   </app-heroes>
-</div>
+</div> -->

@@ -1,23 +1,55 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { HeroService } from '../../services/heroes/hero.service';
 import { Hero } from '../../hero.interface';
+import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent implements OnInit, OnDestroy {
 
   @Input() name: String;
-  @Input() hero: Hero;
+  hero: Hero;
+  subscription: Subscription;
+  // @Input() hero: Hero;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+    private service: HeroService,
+    private location: Location) {
+      this.hero = {
+        id: -1,
+        name: ''
+      };
+  }
 
   ngOnInit() {
-    // this.hero = {
-    //   id: 1,
-    //   name: this.name
-    // };
+    let heroId: number;
+    this.subscription = this.route.paramMap
+      .pipe(
+        switchMap(params => {
+          if (params.has('id')) {
+            heroId = +params.get('id');
+            return this.service.getDataById(heroId);
+          }
+        })
+      )
+      .subscribe(response => {
+        this.hero = response[0];
+      });
+  }
+
+  goBack() {
+    this.location.back();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

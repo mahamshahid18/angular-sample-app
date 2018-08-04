@@ -1,0 +1,33 @@
+
+.title h2{
+    padding: 20px 50px;
+    font-weight: 400;
+}
+
+.dashboard-container {
+    padding: 10px 20px;
+}
+
+.dashboard-item {
+    list-style-type: none;
+    max-width: 8.3vw;
+    max-height: 8.3vh;
+    padding: 30px 30px;
+    background-color:#BE9ADB;
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    margin: 0px 5px;
+    display: inline-block;
+}
+
+.dashboard-item:hover {
+    background-color: #947CB0;
+    color: #E9E9EC;
+}
+
+.dashboard-item h3 {
+    color: white;
+    font-size: 16px;
+    line-height: 20px;
+}

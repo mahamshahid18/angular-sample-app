@@ -24,7 +24,16 @@ app.route('/data')
         res.status(200);
         res.send(data);
         console.log('Data sent!\n');
-        // console.log(data + '\n');
+    });
+
+app.route('/data/:id')
+    .get((req, res)=> {
+        const matchedItem = data.filter(item => {
+            return item.id === parseInt(req.params.id)
+        });
+        res.status(200);
+        res.send(matchedItem);
+        console.log(`item sent: ${JSON.stringify(matchedItem)}\n`);
     });
 
 app.all('*', (req, res) => {

@@ -1,18 +1,25 @@
-<h2>
-  {{ hero.name | uppercase }} DETAILS
-</h2>
+<div id="selectedHeroDetailSection">
+  <h2>
+    {{ hero.name | uppercase }} DETAILS
+  </h2>
 
-<div>
-  <span>
-    <label>id: </label> {{ hero.id }}
-  </span>
-  <br/>
-  <span>
-    <!-- <label>name: </label> {{ hero.name }} -->
-    <label>name: </label>
-    <input type="text"
-      name="heroName"
-      placeholder="Enter hero's name"
-      [(ngModel)] = "hero.name"/>
-  </span>
+  <div>
+    <span>
+      <label>id: </label> {{ hero.id }}
+    </span>
+    <br/>
+    <span>
+      <!-- <label>name: </label> {{ hero.name }} -->
+      <label>name: </label>
+      <input type="text"
+        name="heroName"
+        placeholder="Enter hero's name"
+        [(ngModel)] = "hero.name"/>
+    </span>
+  </div>
+
+  <div class="back-btn"
+      (click)="goBack()">
+    Go back
+  </div>
 </div>

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "app-start": "ng serve",
+    "server-start": "node --experimental-modules server.mjs",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
