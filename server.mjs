@@ -29,11 +29,19 @@ app.route('/data')
 app.route('/data/:id')
     .get((req, res)=> {
         const matchedItem = data.filter(item => {
-            return item.id === parseInt(req.params.id)
+            return item.id === +req.params.id;
         });
         res.status(200);
         res.send(matchedItem);
         console.log(`item sent: ${JSON.stringify(matchedItem)}\n`);
+    })
+    .delete((req, res) => {
+        let id = +req.params.id;
+        let indexOfItem = data.findIndex(item => item.id === id);
+        data.splice(indexOfItem, 1);
+        res.status(200);
+        res.send();
+        console.log('Item deleted, remaining data: ' + JSON.stringify(data));
     });
 
 app.all('*', (req, res) => {
