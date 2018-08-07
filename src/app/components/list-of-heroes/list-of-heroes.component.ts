@@ -33,6 +33,13 @@ export class ListOfHeroesComponent implements OnInit, OnDestroy {
     this.selectedHero = hero;
   }
 
+  deleteHero(id: number, index: number) {
+    this.service.deleteResource(id)
+      .subscribe(() => {
+        this.listOfHeroes.splice(index, 1);
+      });
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

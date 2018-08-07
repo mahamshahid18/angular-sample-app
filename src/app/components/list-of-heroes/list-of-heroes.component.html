@@ -1,13 +1,16 @@
 <div id="herosListSection">
   <ul class="heroes">
-    <li *ngFor="let hero of listOfHeroes"
-        (click)= "selectHero(hero)"
-        routerLink="/hero/{{ hero.id }}"
-        [class.selected]="hero.id === (selectedHero == undefined? -1 : selectedHero.id)">
-      <span class="badge">
-        {{ hero.id }}
-      </span>
-      {{ hero.name }}
+    <li *ngFor="let hero of listOfHeroes; index as $index">
+      <a routerLink="/hero/{{ hero.id }}">
+        <span class="badge">
+          {{ hero.id }}
+        </span>
+        {{ hero.name }}
+      </a>
+      <button class="delete"
+              (click)="deleteHero(hero.id, $index)">
+        x
+      </button>
     </li>
   </ul>
 </div>

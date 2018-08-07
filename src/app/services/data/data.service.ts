@@ -37,4 +37,14 @@ export class DataService {
         })
       );
   }
+
+  deleteResource(id) {
+    return this.http.delete(`${this.url}/${id}`)
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          throw error;
+        })
+      );
+  }
 }
