@@ -69,7 +69,7 @@ app.route('/data/:id')
         console.log(`item sent: ${JSON.stringify(matchedItem)}\n`);
     })
     .patch((req, res, next) => {
-        let params = JSON.parse(req.body.params);
+        let params = req.body.params;
         if (params) {
             if ((params.op === 'replace') &&
                 (params.path) &&
