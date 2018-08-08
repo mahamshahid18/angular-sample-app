@@ -13,6 +13,7 @@ export class ListOfHeroesComponent implements OnInit, OnDestroy {
   listOfHeroes: Hero[];
   selectedHero: Hero;
   subscription: Subscription;
+  addBtnClicked: boolean;
 
   constructor(private service: HeroService) {
     this.listOfHeroes = [];
@@ -20,6 +21,7 @@ export class ListOfHeroesComponent implements OnInit, OnDestroy {
       id: -1,
       name: ''
     };
+    this.addBtnClicked = false;
   }
 
   ngOnInit() {
@@ -31,6 +33,17 @@ export class ListOfHeroesComponent implements OnInit, OnDestroy {
 
   selectHero(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  addHero(name: string) {
+    const item: Hero = {
+      id: this.listOfHeroes.length + 1,
+      name: name
+    };
+    this.service.addResource({'item': item})
+      .subscribe(() => {
+        this.listOfHeroes.push(item);
+      });
   }
 
   deleteHero(id: number, index: number) {

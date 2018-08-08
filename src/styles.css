@@ -28,3 +28,19 @@ body {
 body, input[text], button {
     color: #947CB0;
 }
+
+.btn-default {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 30px auto;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(231, 228, 228);
+    color: #947CB0;
+}
+
+.btn-default:hover, .btn-default:active {
+    background-color: #DDDBDB;
+    color:#656566;
+}

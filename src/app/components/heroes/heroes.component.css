@@ -9,17 +9,3 @@ input {
 #selectedHeroDetailSection {
     padding: 20px 100px;
 }
-
-.back-btn {
-    display: inline-block;
-    padding: 5px 20px;
-    margin: 30px auto;
-    border-radius: 50px;
-    background-color: rgb(231, 228, 228);
-    color: #947CB0;
-}
-
-.back-btn:hover, .back-btn:active {
-    background-color: #DDDBDB;
-    color:#656566;
-}

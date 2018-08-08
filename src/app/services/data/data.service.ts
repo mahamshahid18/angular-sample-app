@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 export class DataService {
 
   constructor(private http: Http, private url: string) { }
+
 
   getData(limit?: number) {
     return this.http.get(this.url)
@@ -31,6 +32,16 @@ export class DataService {
     return this.http.get(`${this.url}/${id}`)
       .pipe(
         map(response => response.json()),
+        catchError((error) => {
+          console.log(error);
+          throw error;
+        })
+      );
+  }
+
+  addResource(resource) {
+    return this.http.post(this.url, resource)
+      .pipe(
         catchError((error) => {
           console.log(error);
           throw error;

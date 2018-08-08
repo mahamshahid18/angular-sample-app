@@ -1,3 +1,20 @@
+<div id="addHeroSection">
+  <button class="btn-default"
+    (click)="addBtnClicked=true;">
+    Add a Hero
+  </button>
+  <div id="inputBox"
+    [hidden]="!addBtnClicked">
+    <input type="text"
+      placeholder="Enter the name for a new hero"
+      #heroName>
+    <button class="btn-default"
+      (click)="addHero(heroName.value); heroName.value=''; addBtnClicked=false;">
+      Save Changes
+    </button>
+  </div>
+</div>
+
 <div id="herosListSection">
   <ul class="heroes">
     <li *ngFor="let hero of listOfHeroes; index as $index">
