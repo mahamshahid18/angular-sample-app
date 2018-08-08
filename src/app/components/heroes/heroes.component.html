@@ -9,7 +9,6 @@
     </span>
     <br/>
     <span>
-      <!-- <label>name: </label> {{ hero.name }} -->
       <label>name: </label>
       <input type="text"
         name="heroName"
@@ -18,8 +17,12 @@
     </span>
   </div>
 
-  <div class="btn-default"
+  <button class="btn-default"
       (click)="goBack()">
     Go back
-  </div>
+  </button>
+  <button class="btn-default btn-separator-left"
+      (click)="updateHero()">
+    Save Changes
+  </button>
 </div>

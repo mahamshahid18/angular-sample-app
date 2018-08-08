@@ -17,7 +17,6 @@ export class HeroesComponent implements OnInit, OnDestroy {
   @Input() name: String;
   hero: Hero;
   subscription: Subscription;
-  // @Input() hero: Hero;
 
   constructor(private route: ActivatedRoute,
     private service: HeroService,
@@ -42,6 +41,13 @@ export class HeroesComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         this.hero = response[0];
       });
+  }
+
+  updateHero() {
+    this.service.updateResource(this.hero.id, 'name', this.hero.name)
+      .subscribe();
+    // TODO: add some notification/toast about item updated
+    //       in the subscribe callback
   }
 
   goBack() {

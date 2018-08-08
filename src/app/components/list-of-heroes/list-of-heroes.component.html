@@ -1,3 +1,6 @@
+<!-- TODO: add a cancel button if user
+      wishes to cancel adding a hero -->
+
 <div id="addHeroSection">
   <button class="btn-default"
     (click)="addBtnClicked=true;">
@@ -31,9 +34,3 @@
     </li>
   </ul>
 </div>
-
-<!-- <div id="selectedHeroDetailSection">
-  <app-heroes [hero]="(selectedHero === undefined? listOfHeroes[0] : selectedHero)"
-    [hidden]="(selectedHero == undefined) || (selectedHero.id == -1)">
-  </app-heroes>
-</div> -->

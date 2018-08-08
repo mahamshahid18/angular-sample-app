@@ -44,3 +44,11 @@ body, input[text], button {
     background-color: #DDDBDB;
     color:#656566;
 }
+
+.btn-separator-left {
+    margin-left: 10px;
+}
+
+.btn-separator-right {
+    margin-right: 10px;
+}

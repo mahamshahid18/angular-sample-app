@@ -9,6 +9,15 @@ export class DataService {
 
   constructor(private http: Http, private url: string) { }
 
+  addResource(resource) {
+    return this.http.post(this.url, resource)
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          throw error;
+        })
+      );
+  }
 
   getData(limit?: number) {
     return this.http.get(this.url)
@@ -39,14 +48,21 @@ export class DataService {
       );
   }
 
-  addResource(resource) {
-    return this.http.post(this.url, resource)
-      .pipe(
-        catchError((error) => {
-          console.log(error);
-          throw error;
-        })
-      );
+  updateResource(id, fieldName, value) {
+    const params = {
+      op: 'replace',
+      path: fieldName,
+      value: value
+    };
+
+    return this.http.patch(`${this.url}/${id}`, {
+      params: params
+    }).pipe(
+      catchError((error) => {
+        console.log(error);
+        throw error;
+      })
+    );
   }
 
   deleteResource(id) {
