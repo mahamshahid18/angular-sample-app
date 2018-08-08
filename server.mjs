@@ -34,7 +34,7 @@ app.route('/data')
     })
     .post((req, res, next) => {
         let status = httpStatus.badRequest;
-        const resource = JSON.parse(req.body.item);
+        const resource = req.body.item;
         let dataContainsItem = data.filter(item => item.id === +resource.id).length;
         if ((resource != null) &&
             (resource != undefined) &&
@@ -46,7 +46,8 @@ app.route('/data')
 
         if (status === httpStatus.success) {
             res.send(resource);
-            console.log(resource + ' added!');
+            console.log(resource);
+            console.log(' added!');
         }
         else {
             const errMsg = dataContainsItem ?
