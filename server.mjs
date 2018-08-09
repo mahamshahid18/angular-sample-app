@@ -28,8 +28,16 @@ app.get('/', (req, res) => {
 
 app.route('/data')
     .get((req, res) => {
+        const queryParams = req.query;
+        let result = data;
+        if (Object.keys(queryParams).length) {
+            let searchTerm = queryParams.term.toLowerCase();
+            result = data.filter(item => {
+                return item.name.toLowerCase().includes(searchTerm);
+            });
+        }
         res.status(httpStatus.success);
-        res.send(data);
+        res.send(result);
         console.log('Data sent!\n');
     })
     .post((req, res, next) => {
@@ -42,6 +50,7 @@ app.route('/data')
             data.push(resource);
             status = httpStatus.success;
         }
+
         res.status(status);
 
         if (status === httpStatus.success) {
