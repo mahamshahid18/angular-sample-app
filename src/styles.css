@@ -25,8 +25,16 @@ body {
     background: url('./assets/images/ninja-bot.png') no-repeat;
 }
 
-body, input[text], button {
+body, input[type="text"], button {
     color: #947CB0;
+}
+
+input[type="text"] {
+    padding: 7px 10px;
+    border: 0.5px solid #656566;
+    border-radius: 3px;
+    background-color: #EEE;
+    color: #656566;
 }
 
 .btn-default {
