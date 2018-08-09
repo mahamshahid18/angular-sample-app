@@ -84,10 +84,5 @@ button.delete {
 }
 
 input[type="text"] {
-    padding: 7px 10px;
-    border: 0.5px solid #656566;
-    border-radius: 3px;
-    background-color: #EEE;
-    color: #656566;
-    width: 20vw;
+  width: 20vw;
 }
