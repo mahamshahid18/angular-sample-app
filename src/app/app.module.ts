@@ -1,17 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
-import { HttpModule } from '../../node_modules/@angular/http';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './components/heroes/heroes.component';
+import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { ListOfHeroesComponent } from './components/list-of-heroes/list-of-heroes.component';
+import { HeroesComponent } from './components/heroes/heroes.component';
+import { SearchComponent } from './components/search/search.component';
+import { AppLogComponent } from './components/app-log/app-log.component';
 
 import { HeroService } from './services/heroes/hero.service';
 import { DataService } from './services/data/data.service';
-import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
-import { SearchComponent } from './components/search/search.component';
+import { MessageLogService } from './services/messageLog/messageLog.service';
+import { TestService } from './services/test/test.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { SearchComponent } from './components/search/search.component';
     HeroesComponent,
     ListOfHeroesComponent,
     DashboardComponent,
-    SearchComponent
+    SearchComponent,
+    AppLogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,10 @@ import { SearchComponent } from './components/search/search.component';
         component: HeroesComponent
       },
       {
+        path: 'applog',
+        component: AppLogComponent
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full'
@@ -47,7 +55,9 @@ import { SearchComponent } from './components/search/search.component';
   ],
   providers: [
     HeroService,
-    DataService
+    DataService,
+    TestService,
+    MessageLogService
   ],
   bootstrap: [AppComponent]
 })

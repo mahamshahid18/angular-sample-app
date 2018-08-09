@@ -1,0 +1,11 @@
+<h2>Application Log Messages</h2>
+
+<button class="btn-default"
+  (click)="clearMessages()">
+    Clear
+</button>
+<div>
+  <h3 *ngFor="let msg of message$ | async">
+    {{ msg.serviceName }} : {{ msg.message }}
+  </h3>
+</div>
