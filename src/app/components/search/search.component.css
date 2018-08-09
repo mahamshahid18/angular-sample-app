@@ -1,0 +1,19 @@
+ul {
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+li {
+    margin: 5px 0px;
+    list-style-type: none;
+    padding: 5px 10px;
+    max-width: 5em;
+    background-color: #EEE;
+    border-radius: 4px;
+    text-align: center
+}
+
+li > a {
+    text-decoration: none;
+    cursor: pointer;
+}

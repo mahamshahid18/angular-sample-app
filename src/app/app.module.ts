@@ -11,13 +11,15 @@ import { ListOfHeroesComponent } from './components/list-of-heroes/list-of-heroe
 import { HeroService } from './services/heroes/hero.service';
 import { DataService } from './services/data/data.service';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     ListOfHeroesComponent,
-    DashboardComponent
+    DashboardComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

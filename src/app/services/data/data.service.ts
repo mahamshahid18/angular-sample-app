@@ -74,4 +74,15 @@ export class DataService {
         })
       );
   }
+
+  search(term: string) {
+    return this.http.get(`${this.url}?term=${term}`)
+      .pipe(
+        map(response => response.json()),
+        catchError((error) => {
+          console.log(error);
+          throw error;
+        })
+      );
+  }
 }

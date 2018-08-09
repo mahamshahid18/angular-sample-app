@@ -1,0 +1,17 @@
+<div id="searchSection">
+  <input #searchText
+         type="text"
+         name="heroSearch"
+         placeholder="Enter text to search"
+         (keyup)="searchHeros(searchText.value)"/>
+</div>
+
+<div id="searchResults">
+  <ul>
+    <li *ngFor="let hero of heroe$ | async">
+      <a routerLink="/hero/{{ hero.id }}">
+        {{ hero.name }}
+      </a>
+    </li>
+  </ul>
+</div>
