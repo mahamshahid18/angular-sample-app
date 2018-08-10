@@ -21,7 +21,9 @@ export class SearchComponent implements OnInit {
 
   searchHeros(searchTerm) {
     const term = searchTerm.trim().toLowerCase();
-    this.searchArray.next(term);
+    if (term !== '') {
+      this.searchArray.next(term);
+    }
   }
 
   ngOnInit() {
