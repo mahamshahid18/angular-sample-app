@@ -14,7 +14,6 @@ import { AppLogComponent } from './components/app-log/app-log.component';
 import { HeroService } from './services/heroes/hero.service';
 import { DataService } from './services/data/data.service';
 import { MessageLogService } from './services/messageLog/messageLog.service';
-import { TestService } from './services/test/test.service';
 
 @NgModule({
   declarations: [
@@ -43,10 +42,6 @@ import { TestService } from './services/test/test.service';
         component: HeroesComponent
       },
       {
-        path: 'applog',
-        component: AppLogComponent
-      },
-      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full'
@@ -56,7 +51,6 @@ import { TestService } from './services/test/test.service';
   providers: [
     HeroService,
     DataService,
-    TestService,
     MessageLogService
   ],
   bootstrap: [AppComponent]
