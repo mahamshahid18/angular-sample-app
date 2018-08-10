@@ -12,6 +12,6 @@ export class HeroService extends DataService {
   constructor(http: Http, log: MessageLogService) {
     super(http, 'http://localhost:8000/data', log);
 
-    this.logMessage.serviceName = 'HeroService';
+    this.serviceName = 'HeroService';
   }
 }

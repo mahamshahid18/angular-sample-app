@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { AppMessage } from '../../appMessages.interface';
 import { MessageLogService } from '../../services/messageLog/messageLog.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class DataService implements OnInit {
 
-  protected logMessage: AppMessage;
+  protected serviceName: string;
 
   constructor(private http: Http,
     private url: string,
     private log: MessageLogService) {
-      this.logMessage = {
-        serviceName: 'DataService',
-        message: ''
-      };
+      this.serviceName = 'DataService';
+  }
+
+  ngOnInit() {
+    console.log(this.log.getMessages());
   }
 
   addResource(resource) {
@@ -34,7 +34,6 @@ export class DataService {
   getData(limit?: number) {
     return this.http.get(this.url)
       .pipe(
-        tap(() => this.msgLog('Heroes fetched from server')),
         map(response => {
           if (limit) {
             return response.json().filter(item => {
@@ -43,6 +42,7 @@ export class DataService {
           }
           return response.json();
         }),
+        tap(() => this.msgLog('Heroes fetched from server')),
         catchError((error) => {
           console.log(error);
           throw error;
@@ -53,8 +53,8 @@ export class DataService {
   getDataById(id) {
     return this.http.get(`${this.url}/${id}`)
       .pipe(
-        tap(() => this.msgLog(`Hero with id: ${id} fetched`)),
         map(response => response.json()),
+        tap(() => this.msgLog(`Hero with id: ${id} fetched`)),
         catchError((error) => {
           console.log(error);
           throw error;
@@ -94,8 +94,8 @@ export class DataService {
   search(term: string) {
     return this.http.get(`${this.url}?term=${term}`)
       .pipe(
-        tap(() => this.msgLog(`Search for heroes made with term: ${term}`)),
         map(response => response.json()),
+        tap(() => this.msgLog(`Search for heroes made with term: ${term}`)),
         catchError((error) => {
           console.log(error);
           throw error;
@@ -104,7 +104,6 @@ export class DataService {
     }
 
   msgLog(message: string) {
-      this.logMessage.message = message;
-      this.log.addMessage(this.logMessage);
+      this.log.addMessage(`${this.serviceName}: ${message}`);
   }
 }

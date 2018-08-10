@@ -1,49 +1,32 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { AppMessage } from '../../appMessages.interface';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MessageLogService implements OnDestroy {
+export class MessageLogService {
 
-  private messages;
+  private messages: string[];
 
   constructor() {
     this.messages = [];
   }
 
-  private messageNotEmpty(message: AppMessage) {
-    const keys = Object.keys(message);
-    return keys.length &&
-      this.isNotNullOrUndefined(message[keys[0]]) &&
-      this.isNotNullOrUndefined(message[keys[1]]);
+  private isNotNullOrUndefined(msg: string) {
+    return (msg !== undefined && msg !== null);
   }
 
-  private isNotNullOrUndefined(term: string) {
-    return (term !== undefined && term !== null);
-  }
-
-  public addMessage(message: AppMessage) {
-    console.log('add message called');
-    console.log(this.messages);
-    if (this.messageNotEmpty(message)) {
+  public addMessage(message) {
+    if (this.isNotNullOrUndefined(message)) {
       this.messages.push(message);
-      // console.log(message);
     }
   }
 
   public getMessages() {
-    console.log('returning: ');
-    console.log(this.messages);
     return this.messages;
   }
 
   public clearMessageLog() {
     this.messages = [];
-  }
-
-  ngOnDestroy() {
-    this.clearMessageLog();
   }
 
 }
