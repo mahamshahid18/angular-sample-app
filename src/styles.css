@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 
-h1, h2, h3, body {
+h1, h2, h3, h4, h5, h6, body {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -19,10 +19,15 @@ h2, h3 {
     font-weight: 300;
 }
 
+.title h2{
+    padding: 20px 50px;
+    font-weight: 400;
+}
+
 body {
     margin: 2em;
     font-weight: 200;
-    background: url('./assets/images/ninja-bot.png') no-repeat;
+    background: #f5f5f5 url('./assets/images/ninja-bot.png') no-repeat;
 }
 
 body, input[type="text"], button {
@@ -51,6 +56,12 @@ input[type="text"] {
 .btn-default:hover, .btn-default:active {
     background-color: #DDDBDB;
     color:#656566;
+}
+
+button:disabled, button:disabled.btn-default:hover{
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
 }
 
 .btn-separator-left {
