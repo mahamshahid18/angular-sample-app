@@ -32,9 +32,13 @@ app.route('/data')
         let result = data;
         if (Object.keys(queryParams).length) {
             let searchTerm = queryParams.term.toLowerCase();
-            result = data.filter(item => {
-                return item.name.toLowerCase().includes(searchTerm);
-            });
+            if (searchTerm != '') {
+                result = data.filter(item => {
+                    return item.name.toLowerCase().includes(searchTerm);
+                });
+            } else {
+                result = [];
+            }
         }
         res.status(httpStatus.success);
         res.send(result);
