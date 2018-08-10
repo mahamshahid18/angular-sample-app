@@ -1,11 +1,17 @@
-<h2>Application Log Messages</h2>
+<div id="logBody">
+  <div class="">
+    <h2>
+       Application Log Messages
+    </h2>
+  </div>
 
-<button class="btn-default"
-  (click)="clearMessages()">
-    Clear
-</button>
-<div>
-  <h3 *ngFor="let msg of message$ | async">
-    {{ msg.serviceName }} : {{ msg.message }}
-  </h3>
+  <button class="btn-default"
+    (click)="log.clearMessageLog()">
+      Clear
+  </button>
+  <div>
+    <h5 *ngFor="let msg of log.getMessages()">
+      {{ msg }}
+    </h5>
+  </div>
 </div>

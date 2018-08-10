@@ -1,9 +1,15 @@
 /* MessagesComponent's private CSS styles */
 
-body {
-  margin: 2em;
+#logBody {
+  margin-top: 50px;
+  padding: 10px 50px;
 }
-body {
-  color: crimson;
-  font-family: Cambria, Georgia;
+
+h2 {
+  font-weight: 400;
+}
+
+h5 {
+  font-weight: 300;
+  margin: 5px 0px;
 }
