@@ -11,16 +11,11 @@ import { Subscription } from 'rxjs';
 export class ListOfHeroesComponent implements OnInit, OnDestroy {
 
   listOfHeroes: Hero[];
-  selectedHero: Hero;
   subscription: Subscription;
   addBtnClicked: boolean;
 
   constructor(private service: HeroService) {
     this.listOfHeroes = [];
-    this.selectedHero = {
-      id: -1,
-      name: ''
-    };
     this.addBtnClicked = false;
   }
 
@@ -29,10 +24,6 @@ export class ListOfHeroesComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         this.listOfHeroes = response;
       });
-  }
-
-  selectHero(hero: Hero): void {
-    this.selectedHero = hero;
   }
 
   addHero(name: string) {

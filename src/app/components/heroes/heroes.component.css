@@ -1,4 +1,8 @@
 
-#selectedHeroDetailSection {
+#selectedHeroDetailSection, #error {
     padding: 20px 100px;
+}
+
+#error > h1 {
+    color: red;
 }

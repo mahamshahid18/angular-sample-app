@@ -6,7 +6,6 @@ import { Hero } from '../../hero.interface';
 import { switchMap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -22,7 +21,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
     private service: HeroService,
     private location: Location) {
       this.hero = {
-        id: -1,
+        id: 0,
         name: ''
       };
   }
@@ -46,8 +45,6 @@ export class HeroesComponent implements OnInit, OnDestroy {
   updateHero() {
     this.service.updateResource(this.hero.id, 'name', this.hero.name)
       .subscribe();
-    // TODO: add some notification/toast about item updated
-    //       in the subscribe callback
   }
 
   goBack() {
