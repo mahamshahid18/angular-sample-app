@@ -73,13 +73,22 @@ app.route('/data')
     });
 
 app.route('/data/:id')
-    .get((req, res)=> {
+    .get((req, res, next)=> {
+        let response = {};
         const matchedItem = data.filter(item => {
             return item.id === +req.params.id;
         });
-        res.status(httpStatus.success);
-        res.send(matchedItem);
-        console.log(`item sent: ${JSON.stringify(matchedItem)}\n`);
+        if (matchedItem !== undefined &&
+            matchedItem.length) {
+            res.status(httpStatus.success);
+            response = matchedItem;
+            console.log(`item sent: ${JSON.stringify(matchedItem)}\n`);
+        } else {
+            response = new Error('Not Found: no such item found')
+            res.status(httpStatus.notFound);
+            next(response);
+        }
+        res.send(response);
     })
     .patch((req, res, next) => {
         let params = req.body.params;
@@ -103,13 +112,23 @@ app.route('/data/:id')
 
         res.send();
     })
-    .delete((req, res) => {
+    .delete((req, res, next) => {
         let id = +req.params.id;
-        let indexOfItem = data.findIndex(item => item.id === id);
-        data.splice(indexOfItem, 1);
-        res.status(httpStatus.successNoBody);
+        if (id) {
+            let indexOfItem = data.findIndex(item => item.id === id);
+            if (indexOfItem) {
+                data.splice(indexOfItem, 1);
+                res.status(httpStatus.successNoBody);
+                console.log('Item deleted, remaining data: ' + JSON.stringify(data));
+            } else {
+                res.status(httpStatus.badRequest);
+                next(new Error('Bad Request: no id provided to delete item'));
+            }
+        } else {
+            res.status(httpStatus.badRequest);
+            next(new Error('Bad Request: no id provided to delete item'));
+        }
         res.send();
-        console.log('Item deleted, remaining data: ' + JSON.stringify(data));
     });
 
 app.all('*', (req, res) => {
