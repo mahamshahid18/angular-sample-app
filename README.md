@@ -10,7 +10,7 @@ The major structure and functionality of the application is complete, here's the
 * ~~Add search functionality in the app~~
 * ~~Fix bug in App Messaging (logging) : Message Service~~
 * ~~Add cancel button in heroes list page + functionality~~
-* Add notification/toast about hero updated in hero update page
-* Add proper error handling
-* Move the routing mechanism into a separate module
-* Clean up code
+* ~~Add notification/toast about hero updated in hero update page (3rd party are useless, make own later)~~
+* ~~Add proper error handling (added to server and some placed in UI --  need notifs library for adding to the whole UI~~
+* ~~Move the routing mechanism into a separate module~~
+* ~~Clean up code~~
